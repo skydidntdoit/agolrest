@@ -190,11 +190,18 @@
 
     ////adding the const for the feature layer
     const myAirports = new FeatureLayer({
-      url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports_GIS/FeatureServer",
-      
-    //adding the popup here
-    outFields: ["AirportCode"],
-  
+      url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports_GIS/FeatureServer",  
+      outFields: ["AirportCode"],
+      renderer: {
+        type: "simple",
+        symbol: {
+          type: "picture-marker",
+          url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E",
+          width: "32px",
+          height: "32px"
+        }
+      }
+    });
   });
   
   //adding the feature layer to the map
@@ -213,8 +220,6 @@
   
   // Add the widget to the view
   view.ui.add(editor, "top-right");
-
-});
 
   </script>
 
