@@ -187,7 +187,34 @@
     //adding the feature layer for the heliports
     map.add(helipadLayer);
 
-    });
+
+    ////adding the const for the feature layer
+    const myAirports = new FeatureLayer({
+      url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports_GIS/FeatureServer",
+      
+    //adding the popup here
+    outFields: ["AirportCode"],
+  
+  });
+  
+  //adding the feature layer to the map
+  map.add(myAirports);
+
+  // Set the point layer's LayerInfo
+  const pointInfos = {
+    layer: myAirports
+  }
+  
+  // Begin Editor constructor
+  const editor = new Editor({
+    view: view,
+    layerInfos: [pointInfos]
+  }); // End Editor constructor
+  
+  // Add the widget to the view
+  view.ui.add(editor, "top-right");
+
+});
 
   </script>
 
